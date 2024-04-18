@@ -179,9 +179,9 @@ def train_emotic(result_path, model_path, train_log_path, val_log_path, ind2cat,
     for param in emotic_model.parameters():
         param.requires_grad = True
     for param in model_context.parameters():
-        param.requires_grad = True
+        param.requires_grad = False
     for param in model_body.parameters():
-        param.requires_grad = True
+        param.requires_grad = False
     
     device = torch.device("cuda:%s" %(str(args.gpu)) if torch.cuda.is_available() else "cpu")
     opt = optim.Adam((list(emotic_model.parameters()) + list(model_context.parameters()) + list(model_body.parameters())), lr=args.learning_rate, weight_decay=args.weight_decay)
