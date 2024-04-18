@@ -38,6 +38,15 @@ Download the Emotic dataset & annotations, and prepare the directory following t
 │   |    ├── Annotations.mat
 ```
 
+0. Env
+```
+conda create -n emotic python=3.8 -y
+conda activate emotic
+
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch -y
+pip install tensorboardX scipy scikit-learn
+```
+
 1. To convert annotations from mat object to csv files and preprocess the data: 
 
 ```
@@ -72,7 +81,12 @@ Download the Emotic dataset & annotations, and prepare the directory following t
 * mode: Mode to run the main file.
 * inference_file: Text file specifying images to perform inference. A row is: 'full_path_of_image x1 y1 x2 y2', where (x1,y1) and (x2,y2) specify the bounding box. Refer [sample_inference_list.txt](https://github.com/Tandon-A/emotic/blob/master/sample_inference_list.txt).
 * experiment_path: Path of the experiment directory. Models stored in the the directory are used for inference.     
-  
+
+5. To perform inference on video: 
+
+```
+> python yolo_inference.py --experiment_path proj/debug_exp --video_file proj/debug_exp/inference_video.mp4
+```
   
 You can also train and test models on Emotic dataset by using the [Colab_train_emotic notebook](https://github.com/Tandon-A/emotic/blob/master/Colab_train_emotic.ipynb). [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Tandon-A/emotic/blob/master/Colab_train_emotic.ipynb)
 
